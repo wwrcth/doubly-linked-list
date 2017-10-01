@@ -5,7 +5,6 @@ class LinkedList {
       this._head = null;
       this._tail = null;
       this.length = 0;
-      return this;
     }
 
     append(data) {
@@ -62,10 +61,10 @@ class LinkedList {
 
       if (current !== null) {
           temp = current.prev;
-          current.prev = node;
           temp.next = node;
-          node.next = current;
+          current.prev = node;
           node.prev = temp;
+          node.next = current;
       }
 
       this.length++;
@@ -91,11 +90,9 @@ class LinkedList {
 
     deleteAt(index) {
       var current = this._head;
-      // var previous = null;
       var i = 0;
 
       while (current !== null && i !== index) {
-          // previous = current;
           current = current.next;
           i++;
       }
